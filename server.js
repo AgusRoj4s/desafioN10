@@ -10,16 +10,14 @@ app.use('/api/', routes());
 app.engine('hbs', handlebars({
     extname: '.hbs',
     defaultLayout: 'index.hbs',
-    layoutsDir: __dirname + 'views/layout',
-    partialsDir: __dirname + 'views/partials'
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: __dirname + '/views/partials'
 }));
 
 app.set('view engine', 'hbs');
 app.set('views', './views');
-//app.use(express.static('public'));
-app.get('/', (req, res) => {
-    res.render('main');
-});
+app.use(express.static('public'));
+
 // pongo a escuchar el servidor en el puerto indicado
 const puerto = 8080;
 const server = app.listen(puerto, () => {
